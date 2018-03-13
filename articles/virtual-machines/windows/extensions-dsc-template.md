@@ -78,26 +78,22 @@ The DSC extension inherits default extension properties. For more information, s
                         "forceUpdateTag": "[parameters('DscExtensionUpdateTagVersion')]",
                         "settings": {
                             "configurationArguments": {
-                                {
-                                    "Name": "RegistrationKey",
-                                    "Value": {
-                                        "UserName": "PLACEHOLDER_DONOTUSE",
-                                        "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                                    },
-                                },
                                 "RegistrationUrl" : "[parameters('registrationUrl1')]",
                                 "NodeConfigurationName" : "nodeConfigurationNameValue1"
-                        }
+                            }
                         },
                         "protectedSettings": {
-                            "Items": {
-                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
-                                    }
+                            "configurationArguments": {
+                                "RegistrationKey": {
+                                    "userName": "PLACEHOLDER_DONOTUSE",
+                                    "password": "[parameters('registrationKey1')]"
+                                }
+                            }
                         }
                     }
-                ]
-            }
-        }
+                }
+            ]
+}
 ```
 
 ## Detailed settings information
