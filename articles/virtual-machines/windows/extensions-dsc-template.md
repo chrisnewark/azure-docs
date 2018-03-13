@@ -30,8 +30,8 @@ This article describes the Azure Resource Manager template for the [Desired Stat
 The following snippet goes in the **Resource** section of the template. The DSC extension inherits default extension properties. For more information, see [VirtualMachineExtension class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.).
 
 ```json
-            "name": "Microsoft.Powershell.DSC",
-            "type": "extensions",
+             "name": "Microsoft.Powershell.DSC",
+             "type": "extensions",
              "location": "[resourceGroup().location]",
              "apiVersion": "2015-06-15",
              "dependsOn": [
@@ -44,24 +44,19 @@ The following snippet goes in the **Resource** section of the template. The DSC 
                   "autoUpgradeMinorVersion": true,
                   "forceUpdateTag": "[parameters('dscExtensionUpdateTagVersion')]",
                   "settings": {
-                    "configurationArguments": {
-                        {
-                            "Name": "RegistrationKey",
-                            "Value": {
-                                "UserName": "PLACEHOLDER_DONOTUSE",
-                                "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                            },
-                        },
-                        "RegistrationUrl" : "[parameters('registrationUrl1')]",
-                        "NodeConfigurationName" : "nodeConfigurationNameValue1"
-                        }
-                        },
-                        "protectedSettings": {
-                            "Items": {
-                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
-                                    }
-                        }
-                    }
+                       "configurationArguments": {
+                            "RegistrationUrl" : "[parameters('registrationUrl1')]",
+                            "NodeConfigurationName" : "nodeConfigurationNameValue1"
+                       }
+                  },
+                  "protectedSettings": {
+                       "configurationArguments": {
+                            "RegistrationKey": {
+                            "userName": "PLACEHOLDER_DONOTUSE",
+                            "password": "[parameters('registrationKey1')]"
+                          }
+                       }
+                  }
 ```
 
 ## Template example for Windows virtual machine scale sets
