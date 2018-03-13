@@ -52,9 +52,9 @@ The following snippet goes in the **Resource** section of the template. The DSC 
                   "protectedSettings": {
                        "configurationArguments": {
                             "RegistrationKey": {
-                            "userName": "PLACEHOLDER_DONOTUSE",
-                            "password": "[parameters('registrationKey1')]"
-                          }
+                                 "userName": "PLACEHOLDER_DONOTUSE",
+                                 "password": "[parameters('registrationKey1')]"
+                            }
                        }
                   }
 ```
