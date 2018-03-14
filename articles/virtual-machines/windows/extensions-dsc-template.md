@@ -57,6 +57,7 @@ The following snippet goes in the **Resource** section of the template. The DSC 
                             }
                        }
                   }
+              }
 ```
 
 ## Template example for Windows virtual machine scale sets
